@@ -1,3 +1,4 @@
+from flask_migrate import Migrate
 import os
 from blog.models.database import db
 
@@ -31,3 +32,5 @@ db.init_app(app)
 
 cfg_name = os.environ.get("CONFIG_NAME") or "ProductionConfig"
 app.config.from_object(f"blog.configs.{cfg_name}")
+
+migrate = Migrate(app, db)
