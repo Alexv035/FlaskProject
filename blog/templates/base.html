@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +13,18 @@ Base
 </head>
 
 <body>
-<div>
-{% block body %}
-Hello base!
-{% endblock %}
-</div>
+
+<div class="navbar-nav ms-auto">
+    {% if current_user.is_authenticated %}
+    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+    {% else %}
+    <a href="{{ url_for('login') }}"
+    class="nav-link {% if request.endpoint == 'login' -%}active{%- endif %}">
+    Login
+    </a>
+    {% endif %}
+    </div>
+
 
 {# nav bar #}
 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -44,3 +52,4 @@ Hello base!
 
 </body>
 </html>
+
