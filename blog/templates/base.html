@@ -52,6 +52,11 @@ Base
     {{ label }}
     </a>
     {% endfor %}
+    {% for (endpoint, label) in [
+        ('users_app.list', 'Users'),
+        ('articles_app.list', 'Articles'),
+        ('authors_app.list', 'Authors'),
+        ] %}
     </div>
     </div>
     </div>
