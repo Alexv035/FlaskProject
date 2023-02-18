@@ -19,7 +19,10 @@ def articles_list():
 
 @articles_app.route("/<int:article_id>/", endpoint="details")
 def article_detals(article_id):
-    article = Article.query.filter_by(id=article_id).one_or_none()
+    article = Article.query.filter_by(id=article_id).options(
+        joinedload(Article.tags)  # подгружаем связанные теги!
+    ).one_or_none()
+
     if article is None:
         raise NotFound
     return render_template("articles/details.html", article=article)
@@ -28,11 +31,18 @@ def article_detals(article_id):
 @articles_app.route("/create/", methods=["GET", "POST"], endpoint="create")
 @login_required
 def create_article():
+    # добавляем доступные теги в форму
+    form.tags.choices = [(tag.id, tag.name)
+                         for tag in Tag.query.order_by("name")]
     error = None
     form = CreateArticleForm(request.form)
     if request.method == "POST" and form.validate_on_submit():
         article = Article(title=form.title.data.strip(), body=form.body.data)
         db.session.add(article)
+        if form.tags.data:  # если в форму были переданы теги (были выбраны)
+            selected_tags = Tag.query.filter(Tag.id.in_(form.tags.data))
+            for tag in selected_tags:
+                article.tags.append(tag)  # добавляем выбранные теги к статье
         if current_user.author:
             # use existing author if present
             article.author = current_user.author
@@ -50,3 +60,4 @@ def create_article():
         else:
             return redirect(url_for("articles_app.details", article_id=article.id))
     return render_template("articles/create.html", form=form, error=error)
+

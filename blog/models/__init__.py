@@ -1,5 +1,7 @@
 from blog.models.user import User
 from flask_sqlalchemy import SQLAlchemy
+from blog.models.tag import Tag
+
 from blog.models.author import Author
 from blog.models.article import Article
 
@@ -10,6 +12,7 @@ __all__ = [
 
 __all__ = [
     "User",
+    "Tag"
     "Author",
     "Article",
 ]
