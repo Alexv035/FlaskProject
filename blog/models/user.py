@@ -2,6 +2,7 @@ from blog.security import flask_bcrypt
 from sqlalchemy import Column, Integer, String, Boolean, LargeBinary
 from blog.models.database import db
 from blog.models import User
+from sqlalchemy.orm import relationship
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/blog.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -18,6 +19,7 @@ class User(db.Model, UserMixin):
                         nullable=False, default="", server_default="")
     last_name = Column(String(120), unique=False,
                        nullable=False, default="", server_default="")
+    author = relationship("Author", uselist=False, back_populates="user")
 
     def __repr__(self):
         return f"<User #{self.id} {self.username!r}>"
