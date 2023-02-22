@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from blog.models import db
+from blog.models.database import db
 from sqlalchemy.orm import relationship
 from blog.models.article_tag import article_tag_association_table
 

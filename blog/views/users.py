@@ -1,9 +1,9 @@
 
+from flask import Blueprint, render_template
+from werkzeug.exceptions import NotFound
 from blog.models import User
 users_app = Blueprint("users_app", __name__)
 
-from werkzeug.exceptions import NotFound
-from flask import Blueprint, render_template
 
 users_app = Blueprint("users_app", __name__)
 USERS = {
@@ -11,7 +11,6 @@ USERS = {
     2: "Brian",
     3: "Peter",
 }
-
 
 
 @users_app.route("/", endpoint="list")
@@ -33,4 +32,3 @@ def user_details(user_id: int):
         raise NotFound(f"User #{user_id} doesn't exist!")
     return render_template('users/details.html', user_id=user_id,
                            user_name=user_name)
-

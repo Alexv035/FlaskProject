@@ -1,8 +1,9 @@
 from blog.security import flask_bcrypt
 from sqlalchemy import Column, Integer, String, Boolean, LargeBinary
-from blog.models import db
-from blog.models import User
+from blog.models.database import db
+# from blog.models.user import User
 from sqlalchemy.orm import relationship
+from app import app
 
 
 db.init_app(app)

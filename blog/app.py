@@ -2,7 +2,7 @@ from blog.admin import admin
 from blog.security import flask_bcrypt
 from flask_migrate import Migrate
 import os
-from blog.models import db
+from blog.models.database import db
 from blog.views.authors import authors_app
 
 from blog.views.articles import articles_app
