@@ -1,3 +1,4 @@
+from blog.admin import admin
 from blog.security import flask_bcrypt
 from flask_migrate import Migrate
 import os
@@ -37,3 +38,5 @@ app.config.from_object(f"blog.configs.{cfg_name}")
 migrate = Migrate(app, db)
 
 flask_bcrypt.init_app(app)
+
+admin.init_app(app)
