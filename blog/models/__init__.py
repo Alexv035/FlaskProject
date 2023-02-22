@@ -6,6 +6,8 @@ from blog.models.author import Author
 from blog.models.article import Article
 
 db = SQLAlchemy()
+
+
 __all__ = [
     "db",
 ]

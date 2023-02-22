@@ -1,12 +1,14 @@
 from blog.security import flask_bcrypt
 from sqlalchemy import Column, Integer, String, Boolean, LargeBinary
-from blog.models.database import db
+from blog.models import db
 from blog.models import User
 from sqlalchemy.orm import relationship
 
+
+db.init_app(app)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/blog.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db.init_app(app)
 
 
 class User(db.Model, UserMixin):
