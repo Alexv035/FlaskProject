@@ -1,3 +1,4 @@
+from blog.admin import admin
 from blog.security import flask_bcrypt
 from flask_migrate import Migrate
 import os
@@ -41,6 +42,8 @@ migrate = Migrate(app, db)
 flask_bcrypt.init_app(app)
 
 
+admin.init_app(app)
+
 @app.cli.command("create-tags")
 def create_tags():
     """
@@ -59,3 +62,4 @@ def create_tags():
         db.session.add(tag)
     db.session.commit()
     print("created tags")
+
