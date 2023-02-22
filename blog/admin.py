@@ -8,7 +8,7 @@ from blog.models.article import Article
 from blog.models.tag import Tag
 from blog.models.user import User
 
-from blog.models.database import db
+from blog.models import db
 
 # Customized admin interface
 

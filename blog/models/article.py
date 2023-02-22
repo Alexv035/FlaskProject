@@ -1,7 +1,7 @@
-from blog.models.database import db
+from blog.models import db
 from sqlalchemy import Table, Column, Integer, ForeignKey, String, DateTime, Text
-import datetime
-from article_tag import article_tag_association_table
+from datetime import datetime
+from blog.models.article_tag import article_tag_association_table
 from sqlalchemy.sql import func
 
 
@@ -12,10 +12,10 @@ class Article(db.Model):
     articles = db.relationship("Article", back_populates="author")
     title = Column(String(200), nullable=False, default="", server_default="")
     body = Column(Text, nullable=False, default="", server_default="")
-    dt_created = Column(DateTime, default=datetime.utcnow,
+    dt_created = Column(DateTime, default=datetime.now(),
                         server_default=func.now())
-    dt_updated = Column(DateTime, default=datetime.utcnow,
-                        onupdate=datetime.utcnow)
+    dt_updated = Column(DateTime, default=datetime.now(),
+                        onupdate=datetime.now())
     tags = db.relationship("Tag",
                            secondary=article_tag_association_table,
                            back_populates="articles",
