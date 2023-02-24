@@ -1,4 +1,4 @@
-from blog.models.user import User
+# from .user import Users
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 
@@ -6,7 +6,7 @@ login_manager = LoginManager()
 db = SQLAlchemy()
 
 
-__all__ = [
-    "db",
-    "User",
-]
+# __all__ = [
+#     "db",
+#     # "Users",
+# ]
