@@ -1,7 +1,7 @@
 from blog.forms.user import RegistrationForm, LoginForm
 from werkzeug.exceptions import NotFound
 from blog.forms.user import RegistrationForm
-from blog.models.database import db
+from blog.models import db
 from sqlalchemy.exc import IntegrityError
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask import Blueprint, render_template, request, redirect, url_for, current_app
