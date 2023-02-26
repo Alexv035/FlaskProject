@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template
 from flask import Blueprint, render_template, request, current_app, redirect, url_for
 from flask_login import login_required, current_user
 from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import NotFound
 
 from blog.models.database import db
-from blog.models import Author, Article
+from blog.models.author import Author
+from blog.models.article import Article
 from blog.forms.article import CreateArticleForm
 
 articles_app = Blueprint("articles_app", __name__)
@@ -60,4 +60,3 @@ def create_article():
         else:
             return redirect(url_for("articles_app.details", article_id=article.id))
     return render_template("articles/create.html", form=form, error=error)
-

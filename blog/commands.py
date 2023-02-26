@@ -5,15 +5,15 @@ from blog.models.database import db
 # from blog.app import app
 
 
-@click.command("init-db")
-def init_db():
-    from wsgi import app
+# @click.command("init-db")
+# def init_db():
+#     from wsgi import app
 
-    # import models for creating tables
-    from blog.models.user import Users
+#     # import models for creating tables
+#     from blog.models.user import Users
 
-    db.create_all(app=app)
-    print("done!")
+#     db.create_all(app=app)
+#     print("done!")
 
 
 @click.command("create-users")

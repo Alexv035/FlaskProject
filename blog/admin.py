@@ -1,14 +1,13 @@
 from flask_admin import Admin, AdminIndexView, expose
 from flask_login import current_user
 from flask import redirect, url_for
-from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
-# from blog import models
+
 from blog.models.article import Article
 from blog.models.tag import Tag
-from blog.models.user import User
+from blog.models.user import Users
 
-from blog.models import db
+from blog.models.database import db
 
 # Customized admin interface
 
@@ -51,7 +50,7 @@ class UserAdminView(CustomView):
     can_delete = False
 
 
-admin.add_view(UserAdminView(User, db.session, category="Models"))
+admin.add_view(UserAdminView(Users, db.session, category="Models"))
 
 
 class CustomView(ModelView):

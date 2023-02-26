@@ -1,4 +1,4 @@
-from blog.models import db
+from blog.models.database import db
 from sqlalchemy import Table, Column, Integer, ForeignKey, String, DateTime, Text
 from datetime import datetime
 from blog.models.article_tag import article_tag_association_table

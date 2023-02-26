@@ -3,7 +3,6 @@ from blog.views.auth import login_manager, auth_app
 
 from flask import render_template
 
-from blog.views.auth import auth_app
 from blog.views.users import users_app
 from blog.views.articles import articles_app
 from blog.views.authors import authors_app
