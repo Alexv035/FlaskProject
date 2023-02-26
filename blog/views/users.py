@@ -1,11 +1,16 @@
 
 from flask import Blueprint, render_template
 from werkzeug.exceptions import NotFound
+<<<<<<< HEAD
 from blog.models.user import Users
 from flask_login import login_required
 
 
 # users_app = Blueprint("users_app", __name__)
+=======
+from blog.models import User
+users_app = Blueprint("users_app", __name__)
+>>>>>>> c1efac286ac479b4e9cdcc78b28f3c85ab541efc
 
 
 users_app = Blueprint('user', __name__, url_prefix='/users',
@@ -37,6 +42,7 @@ def user_details(user_id: int):
         raise NotFound(f"User #{user_id} doesn't exist!")
     return render_template('users/details.html', user_id=user_id,
                            user_name=user_name)
+<<<<<<< HEAD
 
 
 # @user.route('/<int:pk>')
@@ -50,3 +56,5 @@ def user_details(user_id: int):
 #         'users/profile.html',
 #         user=selected_user,
 #     )
+=======
+>>>>>>> c1efac286ac479b4e9cdcc78b28f3c85ab541efc
