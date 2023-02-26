@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from blog.models.database import db
+from blog.models import db
 from sqlalchemy.orm import relationship
 from blog.models.article_tag import article_tag_association_table
 
@@ -12,3 +12,6 @@ class Tag(db.Model):
         secondary=article_tag_association_table,
         back_populates="tags",
     )
+
+    def __str__(self):
+        return self.name

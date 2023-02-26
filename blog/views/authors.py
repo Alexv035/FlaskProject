@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from blog.models import Author
+from blog.models.author import Author
 
 authors_app = Blueprint("authors_app", __name__)
 
