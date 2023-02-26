@@ -9,11 +9,19 @@ from flask_login import UserMixin
 
 db.init_app(app)
 
+<<<<<<< HEAD
+=======
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/blog.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+>>>>>>> c1efac286ac479b4e9cdcc78b28f3c85ab541efc
 
+class Users(db.Model):
+    __tablename__ = 'users'
 
+<<<<<<< HEAD
+=======
 class User(db.Model, UserMixin):
+>>>>>>> c1efac286ac479b4e9cdcc78b28f3c85ab541efc
     id = Column(Integer, primary_key=True)
     username = Column(String(80), unique=True, nullable=False)
     is_staff = Column(Boolean, nullable=False, default=False)
@@ -25,6 +33,14 @@ class User(db.Model, UserMixin):
                        nullable=False, default="", server_default="")
     author = relationship("Author", uselist=False, back_populates="user")
 
+<<<<<<< HEAD
+    def __init__(self, username, is_staff):
+        self.username = username
+        self.is_staff = is_staff
+
+    # def __repr__(self):
+    #     return f"<User #{self.id} {self.username!r}>"
+=======
     def __repr__(self):
         return f"<User #{self.id} {self.username!r}>"
 
@@ -49,3 +65,4 @@ def create_admin():
     db.session.add(admin)
     db.session.commit()
     print("created admin:", admin)
+>>>>>>> c1efac286ac479b4e9cdcc78b28f3c85ab541efc

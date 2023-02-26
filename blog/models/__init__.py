@@ -1,13 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
-
-
-db = SQLAlchemy()
-
+from blog.models.user import Users
 
 __all__ = [
-    "db",
-    "User",
-    "Tag"
-    "Author",
-    "Article",
+    "Users",
 ]
