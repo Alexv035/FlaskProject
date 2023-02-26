@@ -77,7 +77,7 @@ def login():
         return redirect("index")
     form = LoginForm(request.form)
     if request.method == "POST" and form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).one_or_none()
+        user = Users.query.filter_by(username=form.username.data).one_or_none()
         if user is None:
             return render_template("auth/login.html", form=form, error="username doesn't exist")
         if not user.validate_password(form.password.data):

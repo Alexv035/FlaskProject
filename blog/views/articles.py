@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, current_app, redirect, ur
 from flask_login import login_required, current_user
 from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import NotFound
+from sqlalchemy.orm import joinedload
 
 from blog.models.database import db
 from blog.models.author import Author
@@ -20,16 +21,15 @@ def articles_list():
 @articles_app.route("/<int:article_id>/", endpoint="details")
 def article_detals(article_id):
     article = Article.query.filter_by(id=article_id).options(
-        joinedload(Article.tags)  # подгружаем связанные теги!
-    ).one_or_none()
+        joinedload(Article.tags))  # подгружаем связанные теги!).one_or_none()
 
     if article is None:
         raise NotFound
     return render_template("articles/details.html", article=article)
 
 
-@articles_app.route("/create/", methods=["GET", "POST"], endpoint="create")
-@login_required
+@ articles_app.route("/create/", methods=["GET", "POST"], endpoint="create")
+@ login_required
 def create_article():
     # добавляем доступные теги в форму
     form.tags.choices = [(tag.id, tag.name)

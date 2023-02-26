@@ -16,6 +16,8 @@ class Article(db.Model):
                         server_default=func.now())
     dt_updated = Column(DateTime, default=datetime.now(),
                         onupdate=datetime.now())
+
+    author = db.relationship('Author', back_populates='articles')
     tags = db.relationship("Tag",
                            secondary=article_tag_association_table,
                            back_populates="articles",

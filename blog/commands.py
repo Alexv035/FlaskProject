@@ -38,7 +38,7 @@ def create_tags():
     Run in your terminal:
     ➜ flask create-tags
     """
-    from blog.models import Tag
+    from blog.models.tag import Tag
     for name in [
         "flask",
         "django",
