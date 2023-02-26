@@ -5,11 +5,11 @@ from blog.models.user import Users
 from flask_login import login_required
 
 
-users_app = Blueprint("users_app", __name__)
+# users_app = Blueprint("users_app", __name__)
 
 
-# user = Blueprint('user', __name__, url_prefix='/users',
-#                  static_folder='../static')
+users_app = Blueprint('user', __name__, url_prefix='/users',
+                      static_folder='../static')
 
 users_table = {
     1: "James",
